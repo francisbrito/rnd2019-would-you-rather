@@ -9,8 +9,6 @@ function PrivateRoute({
 }) {
   const isAuthenticated = !!authenticatedUser;
 
-  console.log(isAuthenticated);
-
   return (
     <Route
       {...routeProps}
