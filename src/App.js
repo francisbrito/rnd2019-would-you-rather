@@ -20,6 +20,10 @@ function Polls() {
   return <h1>Polls</h1>;
 }
 
+function PollDetailPage() {
+  return <h1>Poll Detail</h1>;
+}
+
 function NotFound() {
   return <h1>Not Found</h1>;
 }
@@ -33,6 +37,7 @@ function App() {
           <Route component={SignUp} path="/register" />
           <PrivateRoute component={HomePage} path="/" exact />
           <PrivateRoute component={Polls} path="/polls" />
+          <PrivateRoute component={PollDetailPage} path="/polls/:id" />
           <PrivateRoute component={AddNewPoll} path="/polls/new" />
           <Route component={NotFound} />
         </Switch>

@@ -18,7 +18,7 @@ const Wrapper = styled.button`
   border: none;
   &:hover {
     outline: none;
-    transform: scale(.9)
+    transform: scale(0.9);
   }
 `;
 
@@ -27,16 +27,17 @@ const Icon = styled.img`
   width: 24px;
 `;
 
-export default function AddQuestionButton({ onClick }) {
+export default function AddQuestionButton({ className, onClick }) {
   return (
-    <Wrapper onClick={onClick}>
+    <Wrapper className={className} onClick={onClick}>
       <Icon src={addIcon} alt="Add" />
     </Wrapper>
   );
 }
 
 AddQuestionButton.propTypes = {
-  onClick: propTypes.func
+  onClick: propTypes.func,
+  className: propTypes.string
 };
 
 AddQuestionButton.defaultProps = {
