@@ -19,13 +19,13 @@ const Wrapper = styled.div`
 `;
 
 const disabledButton = css`
-  background: rgba(0, 0, 0, .1);
+  background: rgba(0, 0, 0, 0.1);
   cursor: not-allowed;
   box-shadow: none;
-  
+
   &:hover,
   &:active {
-    transform: none;  
+    transform: none;
   }
 `;
 
@@ -130,8 +130,11 @@ const mapStateToProps = ({ authentication }) => ({
   currentUser: authentication.currentUser
 });
 
-const mapDispatchToProps = dispatch => ({
-  onAddNewPoll: newPoll => dispatch(addNewPollAction(newPoll))
+const mapDispatchToProps = (dispatch, { history }) => ({
+  onAddNewPoll: newPoll => {
+    dispatch(addNewPollAction(newPoll));
+    history.push('/');
+  }
 });
 
 export default connect(
