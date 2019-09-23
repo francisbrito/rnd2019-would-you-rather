@@ -19,3 +19,10 @@ export const basic = () => (
     onClickViewScoreboard={action('onClickViewScoreboard')}
   />
 );
+
+export const empty = () => (
+  <TopPlayersSection
+    players={[]}
+    onClickViewScoreboard={action('onClickViewScoreboard')}
+  />
+);
