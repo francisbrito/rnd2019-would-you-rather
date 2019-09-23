@@ -31,3 +31,5 @@ export const SAVE_PROFILE = 'SAVE_PROFILE';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
 
 export const SIGN_IN = 'SIGN_IN';
+
+export const ANSWER_POLL = 'ANSWER_POLL';

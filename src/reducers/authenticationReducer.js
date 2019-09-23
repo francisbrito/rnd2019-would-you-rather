@@ -1,9 +1,9 @@
 import { SAVE_PROFILE, LOGOUT, SELECT_PROFILE, SIGN_IN } from '../actionTypes';
 
-const GUEST_PROFILE = {
+export const GUEST_PROFILE = {
   id: 'guest-profile',
   playerName: 'Guest',
-  playerPicture: 'https://via.placeholder.com/300?text=G'
+  playerPicture: 'https://placekitten.com/300'
 };
 
 const INITIAL = {

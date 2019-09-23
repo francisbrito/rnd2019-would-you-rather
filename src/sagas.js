@@ -1,13 +1,17 @@
 import { put, takeEvery, select, all } from 'redux-saga/effects';
 
 import {
+  addNewUserAction,
   refreshLatestPollsAction,
   refreshTopScoresAction,
   signInAction
 } from './actions';
 import { ADD_NEW_POLL, ADD_NEW_USER, SELECT_PROFILE } from './actionTypes';
+import { GUEST_PROFILE } from './reducers/authenticationReducer';
 
-export function* initialSaga() {}
+export function* initialSaga() {
+  yield put(addNewUserAction(GUEST_PROFILE));
+}
 
 export function* refreshTopScoresSaga() {
   const players = yield select(state => state.scoreboard);
@@ -45,9 +49,9 @@ export function* watchSelectProfile() {
 
 export default function* rootSaga() {
   yield all([
-    initialSaga(),
     watchAddNewUserSaga(),
     watchAddNewPoll(),
-    watchSelectProfile()
+    watchSelectProfile(),
+    initialSaga(),
   ]);
 }

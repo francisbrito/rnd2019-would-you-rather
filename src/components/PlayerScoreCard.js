@@ -65,13 +65,13 @@ export default function PlayerScoreCard({
   pollsCreated,
   pollsAnswered
 }) {
-  const [firstName, lastName] = playerName.split(' ');
+  const [firstName] = playerName.split(' ');
   return (
     <Wrapper className={className}>
       <PlayerInformationWrapper>
         <ProfilePicture src={playerPicture} alt={playerName} />
         <PlayerName>
-          {firstName} {lastName[0]}.
+          {firstName}
         </PlayerName>
       </PlayerInformationWrapper>
       <ScoreInformationWrapper>

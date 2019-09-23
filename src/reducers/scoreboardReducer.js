@@ -1,7 +1,9 @@
+import * as r from 'ramda';
+
 import {
+  ADD_NEW_POLL,
   ADD_NEW_USER,
-  ANSWER_POLL_SUCCESS,
-  CREATE_POLL_SUCCESS,
+  ANSWER_POLL,
   RESET_SCOREBOARD
 } from '../actionTypes';
 
@@ -13,41 +15,32 @@ export default function scoreboardReducer(state = INITIAL, action) {
       return INITIAL;
     case ADD_NEW_USER:
       return {
-        ...state,
-        [action.payload.user.id]: action.payload.user
-      };
-    case CREATE_POLL_SUCCESS:
-      return {
-        [action.payload.poll.createdBy]: {
-          ...(state[action.payload.poll.createdBy] || {
-            pollsCreated: 0,
-            pollsAnswered: 0
-          }),
-          pollsCreated:
-            (
-              state[action.payload.poll.createdBy] || {
-                pollsCreated: 0,
-                pollsAnswered: 0
-              }
-            ).pollsCreated + 1
+        [action.payload.user.id]: {
+          ...action.payload.user,
+          pollsCreated: 0,
+          pollsAnswered: 0
         }
       };
-    case ANSWER_POLL_SUCCESS:
-      return {
-        [action.payload.poll.createdBy]: {
-          ...(state[action.payload.poll.createdBy] || {
-            pollsCreated: 0,
-            pollsAnswered: 0
-          }),
-          pollsAnswered:
-            (
-              state[action.payload.poll.createdBy] || {
-                pollsCreated: 0,
-                pollsAnswered: 0
-              }
-            ).pollsAnswered + 1
-        }
-      };
+    case ADD_NEW_POLL:
+      const out = r.evolve(
+        {
+          [action.payload.poll.createdBy.id]: {
+            pollsCreated: r.add(1)
+          }
+        },
+        state
+      );
+      console.log(out);
+      return out;
+    case ANSWER_POLL:
+      return r.evolve(
+        {
+          [action.payload.poll.createdBy.id]: {
+            pollsAnswered: r.add(1)
+          }
+        },
+        state
+      );
     default:
       return state;
   }

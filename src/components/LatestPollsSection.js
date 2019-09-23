@@ -39,6 +39,7 @@ const PollsWrapper = styled.div`
   overflow: hidden;
   overflow-x: scroll;
   padding: 4px;
+  align-items: flex-start;
 `;
 
 const StyledPoll = styled(Poll)`

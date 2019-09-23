@@ -55,7 +55,7 @@ export const resetPolls = () => ({
 export const refreshLatestPollsAction = polls => ({
   type: REFRESH_LATEST_POLLS,
   payload: {
-    polls
+    polls: Object.values(polls)
   }
 });
 

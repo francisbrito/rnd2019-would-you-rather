@@ -43,7 +43,7 @@ const mapStateToProps = (state, { history }) => ({
   topPlayers: state.topPlayers,
   latestPolls: state.latestPolls,
   onAddNewPoll: () => history.push('/polls/new'),
-  onOpenPoll: id => history.push(`/polls/${id}`)
+  onOpenPoll: poll => history.push(`/polls/${poll.id}`)
 });
 
 export default connect(mapStateToProps)(HomePage);

@@ -31,7 +31,7 @@ const CreationInformation = styled(Label)`
 `;
 
 export default function Poll({ className, options, createdBy, creationDate }) {
-  const playerFirstName = createdBy.split(' ')[0];
+  const playerFirstName = createdBy.playerName.split(' ')[0];
   const question = options.join(' or ');
   const creationTimeInformation = creationDate
     ? formatDistance(creationDate, new Date(), { addSuffix: true })
@@ -50,6 +50,8 @@ export default function Poll({ className, options, createdBy, creationDate }) {
 
 Poll.propTypes = {
   options: propTypes.arrayOf(propTypes.string).isRequired,
-  createdBy: propTypes.string.isRequired,
+  createdBy: propTypes.shape({
+    playerName: propTypes.string.isRequired,
+  }).isRequired,
   creationDate: propTypes.number
 };
