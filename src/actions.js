@@ -11,7 +11,8 @@ import {
   ADD_NEW_USER,
   ADD_NEW_POLL,
   SELECT_PROFILE,
-  SAVE_PROFILE
+  SAVE_PROFILE,
+  SIGN_IN
 } from './actionTypes';
 
 export const retrieveTopPlayersAction = () => ({
@@ -78,4 +79,9 @@ export const selectProfileAction = id => ({
 export const saveProfileAction = profile => ({
   type: SAVE_PROFILE,
   payload: { profile }
+});
+
+export const signInAction = user => ({
+  type: SIGN_IN,
+  payload: { user }
 });

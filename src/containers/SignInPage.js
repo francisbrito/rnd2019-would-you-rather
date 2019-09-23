@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Redirect } from 'react-router';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as propTypes from 'prop-types';
@@ -33,19 +34,30 @@ const SubTitle = styled.h4`
   margin: 0;
 `;
 
-function SignInPage({ savedProfiles, guestProfile, onSelectProfile }) {
+function SignInPage({
+  savedProfiles,
+  guestProfile,
+  onSelectProfile,
+  isAuthenticated
+}) {
   return (
-    <Wrapper>
-      <Title>Would you rather?</Title>
-      <SubTitle>A fun game to play with friends</SubTitle>
-        <ChooseProfileButton
-          defaultProfile={guestProfile}
-          onClick={onSelectProfile}
-          savedProfiles={savedProfiles}
-        >
-          Continue as <strong>Guest</strong>
-        </ChooseProfileButton>
-    </Wrapper>
+    <Fragment>
+      {isAuthenticated ? (
+        <Redirect to="/" />
+      ) : (
+        <Wrapper>
+          <Title>Would you rather?</Title>
+          <SubTitle>A fun game to play with friends</SubTitle>
+          <ChooseProfileButton
+            defaultProfile={guestProfile}
+            onClick={onSelectProfile}
+            savedProfiles={savedProfiles}
+          >
+            Continue as <strong>Guest</strong>
+          </ChooseProfileButton>
+        </Wrapper>
+      )}
+    </Fragment>
   );
 }
 
@@ -62,17 +74,20 @@ SignInPage.propTypes = {
       playerPicture: propTypes.string.isRequired
     })
   ),
-  onSelectProfile: propTypes.func.isRequired
+  onSelectProfile: propTypes.func.isRequired,
+  isAuthenticated: propTypes.bool
 };
 
 SignInPage.defaultProps = {
-  savedProfiles: []
+  savedProfiles: [],
+  isAuthenticated: false
 };
 
 const mapStateToProps = ({ authentication }) => ({
   guestProfile: authentication.guestProfile,
   selectedProfile: authentication.selectedProfile,
   savedProfiles: Object.values(authentication.savedProfiles),
+  isAuthenticated: !!authentication.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

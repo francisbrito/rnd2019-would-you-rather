@@ -9,6 +9,8 @@ function PrivateRoute({
 }) {
   const isAuthenticated = !!authenticatedUser;
 
+  console.log(isAuthenticated);
+
   return (
     <Route
       {...routeProps}
@@ -28,8 +30,8 @@ function PrivateRoute({
   );
 }
 
-const mapStateToProps = ({ currentUser }) => ({
-  authenticatedUser: currentUser
+const mapStateToProps = ({ authentication }) => ({
+  authenticatedUser: authentication.currentUser
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

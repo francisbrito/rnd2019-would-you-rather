@@ -1,4 +1,4 @@
-import { SAVE_PROFILE, LOGOUT, SELECT_PROFILE } from '../actionTypes';
+import { SAVE_PROFILE, LOGOUT, SELECT_PROFILE, SIGN_IN } from '../actionTypes';
 
 const GUEST_PROFILE = {
   id: 'guest-profile',
@@ -29,6 +29,11 @@ export default function authenticationReducer(state = INITIAL, action) {
       return {
         ...state,
         selectedProfile: action.payload.id
+      };
+    case SIGN_IN:
+      return {
+        ...state,
+        currentUser: action.payload.user
       };
     case LOGOUT:
       return INITIAL;
