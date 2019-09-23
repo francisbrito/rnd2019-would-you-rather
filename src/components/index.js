@@ -10,3 +10,4 @@ export { default as AddQuestionButton } from './AddQuestionButton';
 export { default as LatestPollsSection } from './LatestPollsSection';
 export { default as TopPlayersSection } from './TopPlayersSection';
 export { default as ChooseProfileButton } from './ChooseProfileButton';
+export { default as FloatingActionButton } from './FloatingActionButton';

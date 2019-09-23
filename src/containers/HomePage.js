@@ -33,8 +33,8 @@ HomePage.propTypes = {
   history: propTypes.shape({
     push: propTypes.func.isRequired
   }),
-  topPlayers: propTypes.shape(TopPlayersSection.propTypes),
-  latestPolls: propTypes.shape(LatestPollsSection.propTypes),
+  topPlayers: TopPlayersSection.propTypes.players,
+  latestPolls: LatestPollsSection.propTypes.polls,
   onAddNewPoll: propTypes.func,
   onOpenPoll: propTypes.func
 };
