@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Switch } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { Home, PrivateRoute, SignInPage } from './containers';
+import { HomePage, PrivateRoute, SignInPage } from './containers';
 import { createStore } from './reducers';
 
 const store = createStore();
@@ -31,7 +31,7 @@ function App() {
         <Switch>
           <Route component={SignInPage} path="/authenticate" />
           <Route component={SignUp} path="/register" />
-          <PrivateRoute component={Home} path="/" exact />
+          <PrivateRoute component={HomePage} path="/" exact />
           <PrivateRoute component={Polls} path="/polls" />
           <PrivateRoute component={AddNewPoll} path="/polls/new" />
           <Route component={NotFound} />

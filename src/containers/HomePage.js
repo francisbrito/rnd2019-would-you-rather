@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   padding: 12px;
 `;
 
-function Home({ topPlayers, latestPolls, openPoll }) {
+function HomePage({ topPlayers, latestPolls, openPoll }) {
   return (
     <Wrapper>
       <TopPlayersSection players={topPlayers} />
@@ -22,4 +22,4 @@ const mapDispatchToProps = state => ({
   latestPolls: state.latestPolls
 });
 
-export default connect(mapDispatchToProps)(Home);
+export default connect(mapDispatchToProps)(HomePage);
