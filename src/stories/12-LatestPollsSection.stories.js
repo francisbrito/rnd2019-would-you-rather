@@ -21,3 +21,11 @@ export const basic = () => (
     onClickViewPolls={action('onClickViewPolls')}
   />
 );
+
+export const empty = () => (
+  <LatestPollsSection
+    polls={[]}
+    onClickPoll={action('onClickPoll')}
+    onClickViewPolls={action('onClickViewPolls')}
+  />
+);
