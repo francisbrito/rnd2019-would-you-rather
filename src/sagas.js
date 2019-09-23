@@ -1,9 +1,6 @@
 import { put, takeEvery, select, all } from 'redux-saga/effects';
-import * as uuid from 'uuid';
 
 import {
-  addNewPollAction,
-  addNewUserAction,
   refreshLatestPollsAction,
   refreshTopScoresAction,
   signInAction
@@ -18,13 +15,13 @@ export function* refreshTopScoresSaga() {
   yield put(refreshTopScoresAction(players));
 }
 
-export function* refreshLatestPolls() {
+export function* refreshLatestPollsSaga() {
   const polls = yield select(state => state.polls);
 
   yield put(refreshLatestPollsAction(polls));
 }
 
-export function* signIn() {
+export function* signInSaga() {
   const { selectedProfile, savedProfiles } = yield select(
     state => state.authentication
   );
@@ -38,11 +35,12 @@ export function* watchAddNewUserSaga() {
 }
 
 export function* watchAddNewPoll() {
-  yield takeEvery(ADD_NEW_POLL, refreshLatestPolls);
+  yield takeEvery(ADD_NEW_POLL, refreshLatestPollsSaga);
+  yield takeEvery(ADD_NEW_POLL, refreshTopScoresSaga);
 }
 
 export function* watchSelectProfile() {
-  yield takeEvery(SELECT_PROFILE, signIn);
+  yield takeEvery(SELECT_PROFILE, signInSaga);
 }
 
 export default function* rootSaga() {
