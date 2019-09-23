@@ -27,9 +27,14 @@ const Icon = styled.img`
   width: 24px;
 `;
 
-export default function FloatingActionButton({ className, onClick, icon }) {
+export default function FloatingActionButton({
+  className,
+  onClick,
+  icon,
+  ...buttonProps
+}) {
   return (
-    <Wrapper className={className} onClick={onClick}>
+    <Wrapper {...buttonProps} className={className} onClick={onClick}>
       <Icon src={icon} alt="Add" />
     </Wrapper>
   );
