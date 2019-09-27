@@ -14,6 +14,7 @@ import topPlayersReducer from './topPlayersReducer';
 import latestPollsReducer from './latestPollsReducer';
 import pollsReducer from './pollsReducer';
 import authenticationReducer from './authenticationReducer';
+import answersReducer from './answersReducer';
 
 import rootSaga from '../sagas';
 
@@ -33,7 +34,8 @@ export const createStore = () => {
         topPlayers: topPlayersReducer,
         polls: pollsReducer,
         latestPolls: latestPollsReducer,
-        authentication: authenticationReducer
+        authentication: authenticationReducer,
+        answers: answersReducer
       })
     ),
     compose(

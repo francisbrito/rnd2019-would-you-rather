@@ -7,7 +7,8 @@ import { selectPollAction } from '../actions';
 import {
   AddQuestionButton,
   LatestPollsSection,
-  TopPlayersSection
+  TopPlayersSection,
+  MyAnswersSection
 } from '../components';
 
 const Wrapper = styled.div`
@@ -20,12 +21,19 @@ const FloatingAddQuestionButton = styled(AddQuestionButton)`
   right: 24px;
 `;
 
-function HomePage({ topPlayers, latestPolls, onOpenPoll, onAddNewPoll }) {
+function HomePage({
+  topPlayers,
+  latestPolls,
+  onOpenPoll,
+  onAddNewPoll,
+  currentUserAnswers
+}) {
   return (
     <Wrapper>
       <TopPlayersSection players={topPlayers} />
       <LatestPollsSection polls={latestPolls} onClickPoll={onOpenPoll} />
       <FloatingAddQuestionButton onClick={onAddNewPoll} />
+      <MyAnswersSection answers={currentUserAnswers} />
     </Wrapper>
   );
 }
@@ -42,7 +50,10 @@ HomePage.propTypes = {
 
 const mapStateToProps = state => ({
   topPlayers: state.topPlayers,
-  latestPolls: state.latestPolls
+  latestPolls: state.latestPolls,
+  currentUserAnswers: state.answers
+    .filter(a => a.userId === state.authentication.selectedProfile)
+    .map(a => a.answer)
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({

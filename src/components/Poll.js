@@ -16,13 +16,9 @@ const Text = styled.h1`
   font-family: 'Open Sans', sans-serif;
   font-size: 28px;
   font-weight: lighter;
-  text-transform: lowercase;
   padding-bottom: 6px;
   margin: 0 0 6px 0;
   border-bottom: 1px solid rgba(151, 151, 151, 0.1);
-  &::first-letter {
-    text-transform: uppercase;
-  }
 `;
 
 const CreationInformation = styled(Label)`
@@ -51,7 +47,7 @@ export default function Poll({ className, options, createdBy, creationDate }) {
 Poll.propTypes = {
   options: propTypes.arrayOf(propTypes.string).isRequired,
   createdBy: propTypes.shape({
-    playerName: propTypes.string.isRequired,
+    playerName: propTypes.string.isRequired
   }).isRequired,
   creationDate: propTypes.number
 };

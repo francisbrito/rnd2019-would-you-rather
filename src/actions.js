@@ -36,9 +36,9 @@ export const createPollSuccessAction = poll => ({
   payload: { poll }
 });
 
-export const answerPollSuccessAction = ({ selectedOption, poll }) => ({
+export const answerPollSuccessAction = ({ selectedOption, poll, userId }) => ({
   type: ANSWER_POLL_SUCCESS,
-  payload: { selectedOption, poll }
+  payload: { selectedOption, poll, userId }
 });
 
 export const refreshTopScoresAction = players => ({

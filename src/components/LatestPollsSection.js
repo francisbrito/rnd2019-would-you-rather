@@ -101,7 +101,7 @@ export default function LatestPollsSection({
       <SectionHeader>
         <AlignedSectionTitle>Latest Polls</AlignedSectionTitle>
         <ViewPollsClickableWrapper onClick={onClickViewPolls}>
-          <Label>View List</Label>
+          <Label>View polls</Label>
         </ViewPollsClickableWrapper>
       </SectionHeader>
       {isEmpty ? (

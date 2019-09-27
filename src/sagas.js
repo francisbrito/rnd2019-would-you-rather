@@ -53,14 +53,21 @@ export function* watchSelectProfile() {
   yield takeEvery(SELECT_PROFILE, signInSaga);
 }
 
-export function* addAnswerToScoreSaga({ option }) {
-  const { polls, selectedPollId } = yield select(s => ({
+export function* addAnswerToScoreSaga({ payload }) {
+  const { option } = payload;
+  const { polls, selectedPollId, currentUserId } = yield select(s => ({
     polls: s.polls.all,
-    selectedPollId: s.polls.selected
+    selectedPollId: s.polls.selected,
+    currentUserId: s.authentication.selectedProfile
   }));
-  const poll = polls[selectedPollId];
 
-  yield put(answerPollSuccessAction({ selectedOption: option, poll }));
+  yield put(
+    answerPollSuccessAction({
+      selectedOption: option,
+      poll: polls[selectedPollId],
+      userId: currentUserId
+    })
+  );
 
   yield refreshTopScoresSaga();
 }

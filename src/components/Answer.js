@@ -14,9 +14,9 @@ const Text = styled.span`
   font-family: 'Open Sans', sans-serif;
 `;
 
-export default function Answer({ children }) {
+export default function Answer({ className, children }) {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Text>{children}</Text>
     </Wrapper>
   );
