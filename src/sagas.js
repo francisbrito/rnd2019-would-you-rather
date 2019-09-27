@@ -20,7 +20,7 @@ export function* refreshTopScoresSaga() {
 }
 
 export function* refreshLatestPollsSaga() {
-  const polls = yield select(state => state.polls);
+  const polls = yield select(state => state.polls.all);
 
   yield put(refreshLatestPollsAction(polls));
 }
@@ -52,6 +52,6 @@ export default function* rootSaga() {
     watchAddNewUserSaga(),
     watchAddNewPoll(),
     watchSelectProfile(),
-    initialSaga(),
+    initialSaga()
   ]);
 }

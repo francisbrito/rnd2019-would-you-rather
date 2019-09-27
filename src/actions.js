@@ -12,7 +12,9 @@ import {
   ADD_NEW_POLL,
   SELECT_PROFILE,
   SAVE_PROFILE,
-  SIGN_IN
+  SIGN_IN,
+  SELECT_OPTION,
+  SELECT_POLL
 } from './actionTypes';
 
 export const retrieveTopPlayersAction = () => ({
@@ -84,4 +86,17 @@ export const saveProfileAction = profile => ({
 export const signInAction = user => ({
   type: SIGN_IN,
   payload: { user }
+});
+
+export const selectOptionAction = (index, user) => ({
+  type: SELECT_OPTION,
+  payload: {
+    option: index,
+    user
+  }
+});
+
+export const selectPollAction = pollId => ({
+  type: SELECT_POLL,
+  payload: pollId
 });

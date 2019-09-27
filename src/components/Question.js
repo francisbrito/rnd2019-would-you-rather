@@ -2,12 +2,14 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { Card } from './index';
+import { Card, InputCardSeparator } from './index';
+
 import circleCheckIcon from '../icons/circle-check.svg';
 
 const QuestionOption = styled(Card)`
   background-color: ${({ isSelected }) =>
     isSelected ? 'rgba(85, 176, 0, .3)' : 'transparent'};
+  position: relative;
 `;
 
 const Text = styled.span`
@@ -17,7 +19,6 @@ const Text = styled.span`
 `;
 
 const QuestionOptionClickableContainer = styled.button`
-  padding: 12px;
   display: flex;
   flex: 1;
   justify-content: center;
@@ -37,21 +38,41 @@ const Icon = styled.img`
   width: 24px;
   height: 24px;
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 12px;
+  right: 12px;
+`;
+
+const Separator = styled(InputCardSeparator)`
+  margin-bottom: 12px;
 `;
 
 export default function Question({ options, optionSelected, onSelectOption }) {
+  const [option1, option2] = options;
+  const isOption1Selected = optionSelected === 0;
+  const isOption2Selected = optionSelected === 1;
+  const isAnswered = isOption1Selected || isOption2Selected;
+
   return (
     <Fragment>
-      {options.map((option, index) => (
-        <QuestionOption isSelected={index === optionSelected} key={index}>
-          {index === optionSelected && <Icon src={circleCheckIcon} />}
-          <QuestionOptionClickableContainer onClick={onSelectOption}>
-            <Text>{option}?</Text>
-          </QuestionOptionClickableContainer>
-        </QuestionOption>
-      ))}
+      <QuestionOption isSelected={isOption1Selected}>
+        {isOption1Selected && <Icon src={circleCheckIcon} />}
+        <QuestionOptionClickableContainer
+          onClick={() => onSelectOption(0)}
+          disabled={isAnswered}
+        >
+          <Text>{option1}?</Text>
+        </QuestionOptionClickableContainer>
+      </QuestionOption>
+      <Separator />
+      <QuestionOption isSelected={isOption2Selected}>
+        {isOption2Selected && <Icon src={circleCheckIcon} />}
+        <QuestionOptionClickableContainer
+          onClick={() => onSelectOption(1)}
+          disabled={isAnswered}
+        >
+          <Text>{option2}?</Text>
+        </QuestionOptionClickableContainer>
+      </QuestionOption>
     </Fragment>
   );
 }

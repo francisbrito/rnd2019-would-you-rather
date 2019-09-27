@@ -1,11 +1,6 @@
 import * as r from 'ramda';
 
-import {
-  ADD_NEW_POLL,
-  ADD_NEW_USER,
-  ANSWER_POLL,
-  RESET_SCOREBOARD
-} from '../actionTypes';
+import { ADD_NEW_POLL, ADD_NEW_USER, ANSWER_POLL, RESET_SCOREBOARD } from '../actionTypes';
 
 const INITIAL = {};
 
@@ -22,16 +17,14 @@ export default function scoreboardReducer(state = INITIAL, action) {
         }
       };
     case ADD_NEW_POLL:
-      const out = r.evolve(
+      return r.evolve(
         {
-          [action.payload.poll.createdBy.id]: {
+          [ action.payload.poll.createdBy.id ]: {
             pollsCreated: r.add(1)
           }
         },
         state
       );
-      console.log(out);
-      return out;
     case ANSWER_POLL:
       return r.evolve(
         {

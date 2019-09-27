@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Switch } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { HomePage, PrivateRoute, SignInPage, AddNewPollPage } from './containers';
+import { HomePage, PrivateRoute, SignInPage, AddNewPollPage, PollDetailPage } from './containers';
 import { createStore } from './reducers';
 
 const store = createStore();
@@ -14,10 +14,6 @@ function SignUp() {
 
 function Polls() {
   return <h1>Polls</h1>;
-}
-
-function PollDetailPage() {
-  return <h1>Poll Detail</h1>;
 }
 
 function NotFound() {

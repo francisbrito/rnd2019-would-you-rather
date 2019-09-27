@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as propTypes from 'prop-types';
+import { selectPollAction } from '../actions';
 
 import {
   AddQuestionButton,
@@ -41,9 +42,22 @@ HomePage.propTypes = {
 
 const mapStateToProps = (state, { history }) => ({
   topPlayers: state.topPlayers,
-  latestPolls: state.latestPolls,
-  onAddNewPoll: () => history.push('/polls/new'),
-  onOpenPoll: poll => history.push(`/polls/${poll.id}`)
+  latestPolls: state.latestPolls
+  // onAddNewPoll: () => history.push('/polls/new'),
+  // onOpenPoll: poll => history.push(`/polls/${poll.id}`)
 });
 
-export default connect(mapStateToProps)(HomePage);
+const mapDispatchToProps = (dispatch, { history }) => ({
+  onAddNewPoll: () => {
+    history.push('/polls/new');
+  },
+  onOpenPoll: poll => {
+    dispatch(selectPollAction(poll.id));
+    history.push(`/polls/${poll.id}`);
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);

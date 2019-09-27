@@ -33,3 +33,7 @@ export const SELECT_PROFILE = 'SELECT_PROFILE';
 export const SIGN_IN = 'SIGN_IN';
 
 export const ANSWER_POLL = 'ANSWER_POLL';
+
+export const SELECT_OPTION = 'SELECT_OPTION';
+
+export const SELECT_POLL = 'SELECT_POLL';
