@@ -14,7 +14,8 @@ import {
   SAVE_PROFILE,
   SIGN_IN,
   SELECT_OPTION,
-  SELECT_POLL
+  SELECT_POLL,
+  SET_HEADER
 } from './actionTypes';
 
 export const retrieveTopPlayersAction = () => ({
@@ -99,4 +100,9 @@ export const selectOptionAction = (index, user) => ({
 export const selectPollAction = pollId => ({
   type: SELECT_POLL,
   payload: pollId
+});
+
+export const setHeaderAction = title => ({
+  type: SET_HEADER,
+  payload: title
 });

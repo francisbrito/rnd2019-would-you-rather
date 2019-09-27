@@ -15,6 +15,7 @@ import latestPollsReducer from './latestPollsReducer';
 import pollsReducer from './pollsReducer';
 import authenticationReducer from './authenticationReducer';
 import answersReducer from './answersReducer';
+import pageReducer from './pageReducer';
 
 import rootSaga from '../sagas';
 
@@ -35,7 +36,8 @@ export const createStore = () => {
         polls: pollsReducer,
         latestPolls: latestPollsReducer,
         authentication: authenticationReducer,
-        answers: answersReducer
+        answers: answersReducer,
+        page: pageReducer
       })
     ),
     compose(

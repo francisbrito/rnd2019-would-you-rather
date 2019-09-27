@@ -37,3 +37,5 @@ export const ANSWER_POLL = 'ANSWER_POLL';
 export const SELECT_OPTION = 'SELECT_OPTION';
 
 export const SELECT_POLL = 'SELECT_POLL';
+
+export const SET_HEADER = 'SET_HEADER';

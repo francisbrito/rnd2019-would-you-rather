@@ -5,6 +5,8 @@ import * as uuid from 'uuid';
 import { addNewPollAction } from '../actions';
 
 import { Card, FloatingActionButton } from '../components';
+import { useHeader } from '../hooks';
+import { withHeader } from './index';
 
 import checkIcon from '../icons/check.svg';
 
@@ -84,6 +86,8 @@ function AddNewPollPage({ currentUser, onAddNewPoll }) {
   const [optionB, setOptionB] = useState('');
   const isValidPoll = optionA && optionB;
 
+  useHeader('New poll');
+
   return (
     <Wrapper>
       <InputWrapper>
@@ -137,7 +141,9 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddNewPollPage);
+export default withHeader(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AddNewPollPage)
+);

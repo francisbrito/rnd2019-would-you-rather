@@ -13,3 +13,4 @@ export { default as FloatingActionButton } from './FloatingActionButton';
 export { default as InputCardSeparator } from './InputCardSeparator';
 export { default as Question } from './Question';
 export { default as MyAnswersSection } from './MyAnswersSection';
+export { default as Header } from './Header';

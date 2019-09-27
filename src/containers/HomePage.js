@@ -10,6 +10,8 @@ import {
   TopPlayersSection,
   MyAnswersSection
 } from '../components';
+import { useHeader } from '../hooks';
+import { withHeader } from './index';
 
 const Wrapper = styled.div`
   padding: 12px;
@@ -28,6 +30,8 @@ function HomePage({
   onAddNewPoll,
   currentUserAnswers
 }) {
+  useHeader('Home');
+
   return (
     <Wrapper>
       <TopPlayersSection players={topPlayers} />
@@ -66,7 +70,9 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomePage);
+export default withHeader(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(HomePage)
+);

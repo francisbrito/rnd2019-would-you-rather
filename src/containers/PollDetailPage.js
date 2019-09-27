@@ -6,12 +6,16 @@ import * as r from 'ramda';
 
 import { selectOptionAction } from '../actions';
 import { Poll, Question } from '../components';
+import { useHeader } from '../hooks';
+import { withHeader } from './index';
 
 const Wrapper = styled.div`
   padding: 12px;
 `;
 
 function PollDetailPage({ poll, onSelectOption, optionSelected, currentUser }) {
+  useHeader('Would you rather...');
+
   return (
     <Wrapper>
       <Question
@@ -46,7 +50,9 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PollDetailPage);
+export default withHeader(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PollDetailPage)
+);
