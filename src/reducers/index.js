@@ -5,6 +5,8 @@ import {
   compose
 } from 'redux';
 import { createLogger } from 'redux-logger';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import createSagaMiddleware from 'redux-saga';
 
 import scoreboardReducer from './scoreboardReducer';
@@ -18,14 +20,22 @@ import rootSaga from '../sagas';
 export const createStore = () => {
   const sagaMiddleware = createSagaMiddleware();
 
+  const persistConfig = {
+    key: 'would-you-rather',
+    storage
+  };
+
   const store = createRootStore(
-    combineReducers({
-      scoreboard: scoreboardReducer,
-      topPlayers: topPlayersReducer,
-      polls: pollsReducer,
-      latestPolls: latestPollsReducer,
-      authentication: authenticationReducer
-    }),
+    persistReducer(
+      persistConfig,
+      combineReducers({
+        scoreboard: scoreboardReducer,
+        topPlayers: topPlayersReducer,
+        polls: pollsReducer,
+        latestPolls: latestPollsReducer,
+        authentication: authenticationReducer
+      })
+    ),
     compose(
       applyMiddleware(sagaMiddleware),
       applyMiddleware(createLogger())
@@ -34,5 +44,5 @@ export const createStore = () => {
 
   sagaMiddleware.run(rootSaga);
 
-  return store;
+  return { store, persistor: persistStore(store) };
 };

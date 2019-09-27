@@ -2,11 +2,18 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Switch } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { HomePage, PrivateRoute, SignInPage, AddNewPollPage, PollDetailPage } from './containers';
+import {
+  HomePage,
+  PrivateRoute,
+  SignInPage,
+  AddNewPollPage,
+  PollDetailPage
+} from './containers';
 import { createStore } from './reducers';
 
-const store = createStore();
+const { store, persistor } = createStore();
 
 function SignUp() {
   return <h1>Sign Up</h1>;
@@ -23,17 +30,19 @@ function NotFound() {
 function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route component={SignInPage} path="/authenticate" />
-          <Route component={SignUp} path="/register" />
-          <PrivateRoute component={HomePage} path="/" exact />
-          <PrivateRoute component={Polls} path="/polls" exact />
-          <PrivateRoute component={AddNewPollPage} path="/polls/new" exact />
-          <PrivateRoute component={PollDetailPage} path="/polls/:id"  />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <Switch>
+            <Route component={SignInPage} path="/authenticate" />
+            <Route component={SignUp} path="/register" />
+            <PrivateRoute component={HomePage} path="/" exact />
+            <PrivateRoute component={Polls} path="/polls" exact />
+            <PrivateRoute component={AddNewPollPage} path="/polls/new" exact />
+            <PrivateRoute component={PollDetailPage} path="/polls/:id" />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </PersistGate>
     </Provider>
   );
 }

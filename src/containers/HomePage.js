@@ -40,11 +40,9 @@ HomePage.propTypes = {
   onOpenPoll: propTypes.func
 };
 
-const mapStateToProps = (state, { history }) => ({
+const mapStateToProps = state => ({
   topPlayers: state.topPlayers,
   latestPolls: state.latestPolls
-  // onAddNewPoll: () => history.push('/polls/new'),
-  // onOpenPoll: poll => history.push(`/polls/${poll.id}`)
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({

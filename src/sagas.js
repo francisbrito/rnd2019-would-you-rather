@@ -2,11 +2,17 @@ import { put, takeEvery, select, all } from 'redux-saga/effects';
 
 import {
   addNewUserAction,
+  answerPollSuccessAction,
   refreshLatestPollsAction,
   refreshTopScoresAction,
   signInAction
 } from './actions';
-import { ADD_NEW_POLL, ADD_NEW_USER, SELECT_PROFILE } from './actionTypes';
+import {
+  ADD_NEW_POLL,
+  ADD_NEW_USER,
+  SELECT_OPTION,
+  SELECT_PROFILE
+} from './actionTypes';
 import { GUEST_PROFILE } from './reducers/authenticationReducer';
 
 export function* initialSaga() {
@@ -47,11 +53,28 @@ export function* watchSelectProfile() {
   yield takeEvery(SELECT_PROFILE, signInSaga);
 }
 
+export function* addAnswerToScoreSaga({ option }) {
+  const { polls, selectedPollId } = yield select(s => ({
+    polls: s.polls.all,
+    selectedPollId: s.polls.selected
+  }));
+  const poll = polls[selectedPollId];
+
+  yield put(answerPollSuccessAction({ selectedOption: option, poll }));
+
+  yield refreshTopScoresSaga();
+}
+
+export function* watchSelectOption() {
+  yield takeEvery(SELECT_OPTION, addAnswerToScoreSaga);
+}
+
 export default function* rootSaga() {
   yield all([
     watchAddNewUserSaga(),
     watchAddNewPoll(),
     watchSelectProfile(),
+    watchSelectOption(),
     initialSaga()
   ]);
 }
