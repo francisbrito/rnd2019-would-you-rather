@@ -74,14 +74,14 @@ const EmptySection = () => (
   </CenteredWrapper>
 );
 
-export default function TopPlayersSection({ players }) {
+export default function TopPlayersSection({ players, onClickOpenLeaderboard }) {
   const isEmpty = players.length === 0;
 
   return (
     <Wrapper>
       <SectionHeader>
         <AlignedSectionTitle>Top players</AlignedSectionTitle>
-        <ViewScoreboardClickableWrapper>
+        <ViewScoreboardClickableWrapper onClick={onClickOpenLeaderboard}>
           <SectionLabel>View scoreboard</SectionLabel>
         </ViewScoreboardClickableWrapper>
       </SectionHeader>
@@ -104,5 +104,10 @@ TopPlayersSection.propTypes = {
       id: propTypes.string.isRequired,
       ...PlayerScoreCard.propTypes
     })
-  ).isRequired
+  ).isRequired,
+  onClickOpenLeaderboard: propTypes.func
+};
+
+TopPlayersSection.defaultProps = {
+  onClickOpenLeaderboard: () => {}
 };

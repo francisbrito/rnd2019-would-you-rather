@@ -9,7 +9,8 @@ import {
   PrivateRoute,
   SignInPage,
   AddNewPollPage,
-  PollDetailPage
+  PollDetailPage,
+  LeaderboardPage
 } from './containers';
 import { createStore } from './reducers';
 
@@ -39,6 +40,7 @@ function App() {
             <PrivateRoute component={Polls} path="/polls" exact />
             <PrivateRoute component={AddNewPollPage} path="/polls/new" exact />
             <PrivateRoute component={PollDetailPage} path="/polls/:id" />
+            <PrivateRoute component={LeaderboardPage} path="/leaderboard" />
             <Route component={NotFound} />
           </Switch>
         </Router>

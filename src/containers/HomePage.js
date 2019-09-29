@@ -28,13 +28,17 @@ function HomePage({
   latestPolls,
   onOpenPoll,
   onAddNewPoll,
-  currentUserAnswers
+  currentUserAnswers,
+  onOpenLeaderboard
 }) {
   useHeader('Home');
 
   return (
     <Wrapper>
-      <TopPlayersSection players={topPlayers} />
+      <TopPlayersSection
+        players={topPlayers}
+        onClickOpenLeaderboard={onOpenLeaderboard}
+      />
       <LatestPollsSection polls={latestPolls} onClickPoll={onOpenPoll} />
       <FloatingAddQuestionButton onClick={onAddNewPoll} />
       <MyAnswersSection answers={currentUserAnswers} />
@@ -49,7 +53,8 @@ HomePage.propTypes = {
   topPlayers: TopPlayersSection.propTypes.players,
   latestPolls: LatestPollsSection.propTypes.polls,
   onAddNewPoll: propTypes.func,
-  onOpenPoll: propTypes.func
+  onOpenPoll: propTypes.func,
+  onOpenLeaderboard: propTypes.func
 };
 
 const mapStateToProps = state => ({
@@ -67,6 +72,9 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   onOpenPoll: poll => {
     dispatch(selectPollAction(poll.id));
     history.push(`/polls/${poll.id}`);
+  },
+  onOpenLeaderboard: () => {
+    history.push('/leaderboard');
   }
 });
 
