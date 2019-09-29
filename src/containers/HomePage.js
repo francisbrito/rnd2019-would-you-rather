@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const FloatingAddQuestionButton = styled(AddQuestionButton)`
-  position: absolute;
+  position: fixed;
   bottom: 24px;
   right: 24px;
 `;
