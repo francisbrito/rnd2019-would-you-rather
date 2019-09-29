@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { Poll, SectionTitle, Label } from './index';
+import { HorizontalList, Poll, SectionTitle, SectionLabel } from './index';
 import pollsIcon from '../icons/polls.svg';
 
 const Wrapper = styled.div`
@@ -32,14 +32,6 @@ const SectionHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-const PollsWrapper = styled.div`
-  display: flex;
-  overflow: hidden;
-  overflow-x: scroll;
-  padding: 4px;
-  align-items: flex-start;
 `;
 
 const StyledPoll = styled(Poll)`
@@ -101,19 +93,19 @@ export default function LatestPollsSection({
       <SectionHeader>
         <AlignedSectionTitle>Latest Polls</AlignedSectionTitle>
         <ViewPollsClickableWrapper onClick={onClickViewPolls}>
-          <Label>View polls</Label>
+          <SectionLabel>View polls</SectionLabel>
         </ViewPollsClickableWrapper>
       </SectionHeader>
       {isEmpty ? (
         <EmptyList />
       ) : (
-        <PollsWrapper>
+        <HorizontalList>
           {polls.map((p, index) => (
             <PollClickableWrapper key={index} onClick={() => onClickPoll(p)}>
               <StyledPoll {...p} />
             </PollClickableWrapper>
           ))}
-        </PollsWrapper>
+        </HorizontalList>
       )}
     </Wrapper>
   );

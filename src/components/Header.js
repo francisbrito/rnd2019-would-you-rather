@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { SectionTitle } from './index';
+import { Title } from './index';
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   padding: 0 24px;
 `;
 
-const StyledSectionTitle = styled(SectionTitle)`
+const StyledSectionTitle = styled(Title)`
   text-align: center;
   flex: 1;
 `;

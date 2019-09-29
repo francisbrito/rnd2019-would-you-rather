@@ -1,4 +1,7 @@
+export { default as Title } from './Title';
 export { default as Label } from './Label';
+export { default as SectionLabel } from './SectionLabel';
+export { default as HorizontalList } from './HorizontalList';
 export { default as SectionTitle } from './SectionTitle';
 export { default as Card } from './Card';
 export { default as PlayerScoreCard } from './PlayerScoreCard';

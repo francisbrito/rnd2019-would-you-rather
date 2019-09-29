@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { PlayerScoreCard, Label, SectionTitle } from './index';
+import {
+  HorizontalList,
+  PlayerScoreCard,
+  SectionLabel,
+  SectionTitle
+} from './index';
 import scoreboardIcon from '../icons/scoreboard.svg';
 
 const Wrapper = styled.div`
@@ -34,14 +39,6 @@ const ViewScoreboardClickableWrapper = styled.button`
     text-decoration: underline;
     cursor: pointer;
   }
-`;
-
-const PlayerCardsWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-  overflow-x: scroll;
-  padding: 4px;
 `;
 
 const SectionHeader = styled.div`
@@ -85,17 +82,17 @@ export default function TopPlayersSection({ players }) {
       <SectionHeader>
         <AlignedSectionTitle>Top players</AlignedSectionTitle>
         <ViewScoreboardClickableWrapper>
-          <Label>View scoreboard</Label>
+          <SectionLabel>View scoreboard</SectionLabel>
         </ViewScoreboardClickableWrapper>
       </SectionHeader>
       {isEmpty ? (
         <EmptySection />
       ) : (
-        <PlayerCardsWrapper>
+        <HorizontalList>
           {players.map(p => (
             <StyledPlayerScoreCard key={p.id} {...p} />
           ))}
-        </PlayerCardsWrapper>
+        </HorizontalList>
       )}
     </Wrapper>
   );

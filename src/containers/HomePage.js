@@ -14,7 +14,7 @@ import { useHeader } from '../hooks';
 import { withHeader } from './index';
 
 const Wrapper = styled.div`
-  padding: 12px;
+  padding: 0 24px 24px 24px;
 `;
 
 const FloatingAddQuestionButton = styled(AddQuestionButton)`

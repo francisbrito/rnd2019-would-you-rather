@@ -8,7 +8,7 @@ import circleCheckIcon from '../icons/circle-check.svg';
 
 const QuestionOption = styled(Card)`
   background-color: ${({ isSelected }) =>
-    isSelected ? 'rgba(85, 176, 0, .3)' : 'transparent'};
+    isSelected ? 'rgba(85, 176, 0, .3)' : '#fff'};
   position: relative;
 `;
 

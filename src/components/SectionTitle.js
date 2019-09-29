@@ -1,8 +1,7 @@
 import styled from 'styled-components';
+import { Title } from './index';
 
-export default styled.h1`
-  color: #4A4A4A;
-  font-size: 24px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
+export default styled(Title)`
+  margin-top: 24px;
+  margin-bottom: 6px;
 `;

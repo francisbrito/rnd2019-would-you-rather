@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { Label, SectionTitle, Answer } from './index';
+import { SectionLabel, SectionTitle, Answer } from './index';
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ export default function MyAnswersSection({ answers }) {
       <SectionHeader>
         <SectionTitle>My answers</SectionTitle>
         <ClickableWrapper>
-          <Label>View answers</Label>
+          <SectionLabel>View answers</SectionLabel>
         </ClickableWrapper>
       </SectionHeader>
       <AnswerWrapper>
