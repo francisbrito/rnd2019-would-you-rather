@@ -8,3 +8,7 @@ export { default as ConnectedHeader } from './ConnectedHeader';
 export { default as HomePage } from './HomePage';
 export { default as LeaderboardPage } from './LeaderboardPage';
 export { default as PollsPage } from './PollsPage';
+
+export {
+  default as FloatingAddQuestionButton
+} from './FloatingAddQuestionButton';

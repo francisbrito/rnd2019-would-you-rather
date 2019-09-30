@@ -7,7 +7,7 @@ import { selectPollAction } from '../actions';
 
 import { Poll, PollList } from '../components';
 import { useHeader } from '../hooks';
-import { withHeader } from './index';
+import { FloatingAddQuestionButton, withHeader } from './index';
 
 PollsPage.propTypes = {
   polls: propTypes.arrayOf(
@@ -25,20 +25,13 @@ const Wrapper = styled.div`
   padding: 24px;
 `;
 
-const StyledPoll = styled(Poll)`
-  margin-top: 12px;
-
-  &:first-of-type {
-    margin-top: 0;
-  }
-`;
-
-function PollsPage({ polls, onOpenPoll }) {
+function PollsPage({ polls, onOpenPoll, history }) {
   useHeader('Polls');
 
   return (
     <Wrapper>
       <PollList polls={polls} onClickPoll={onOpenPoll} />
+      <FloatingAddQuestionButton history={history} />
     </Wrapper>
   );
 }
@@ -55,7 +48,8 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   onOpenPoll: poll => {
     dispatch(selectPollAction(poll.id));
     history.push(`/polls/${poll.id}`);
-  }
+  },
+  onAddNewPoll: () => {}
 });
 
 export default withHeader(

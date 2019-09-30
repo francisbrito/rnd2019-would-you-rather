@@ -5,32 +5,25 @@ import * as propTypes from 'prop-types';
 import { selectPollAction } from '../actions';
 
 import {
-  AddQuestionButton,
   LatestPollsSection,
   TopPlayersSection,
   MyAnswersSection
 } from '../components';
 import { useHeader } from '../hooks';
-import { withHeader } from './index';
+import { FloatingAddQuestionButton, withHeader } from './index';
 
 const Wrapper = styled.div`
   padding: 0 24px 24px 24px;
-`;
-
-const FloatingAddQuestionButton = styled(AddQuestionButton)`
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
 `;
 
 function HomePage({
   topPlayers,
   latestPolls,
   onOpenPoll,
-  onAddNewPoll,
   currentUserAnswers,
   onOpenLeaderboard,
-  onOpenPolls
+  onOpenPolls,
+  history
 }) {
   useHeader('Home');
 
@@ -45,7 +38,7 @@ function HomePage({
         onClickPoll={onOpenPoll}
         onClickViewPolls={onOpenPolls}
       />
-      <FloatingAddQuestionButton onClick={onAddNewPoll} />
+      <FloatingAddQuestionButton history={history} />
       <MyAnswersSection answers={currentUserAnswers} />
     </Wrapper>
   );
@@ -57,7 +50,6 @@ HomePage.propTypes = {
   }),
   topPlayers: TopPlayersSection.propTypes.players,
   latestPolls: LatestPollsSection.propTypes.polls,
-  onAddNewPoll: propTypes.func,
   onOpenPoll: propTypes.func,
   onOpenLeaderboard: propTypes.func,
   onOpenPolls: propTypes.func
@@ -72,9 +64,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  onAddNewPoll: () => {
-    history.push('/polls/new');
-  },
   onOpenPoll: poll => {
     dispatch(selectPollAction(poll.id));
     history.push(`/polls/${poll.id}`);
