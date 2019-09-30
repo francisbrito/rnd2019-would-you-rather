@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { SectionLabel, SectionTitle, Answer } from './index';
+import { SectionTitle, Answer } from './index';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,20 +13,6 @@ const SectionHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-const ClickableWrapper = styled.button`
-  display: flex;
-  background: none;
-  border: none;
-  outline: none;
-  justify-content: center;
-  align-items: flex-end;
-  &:hover {
-    outline: none;
-    text-decoration: underline;
-    cursor: pointer;
-  }
 `;
 
 const StyledAnswer = styled(Answer)`
@@ -47,9 +33,6 @@ export default function MyAnswersSection({ answers }) {
     <Wrapper>
       <SectionHeader>
         <SectionTitle>My answers</SectionTitle>
-        <ClickableWrapper>
-          <SectionLabel>View answers</SectionLabel>
-        </ClickableWrapper>
       </SectionHeader>
       <AnswerWrapper>
         {answers.map((a, index) => (
