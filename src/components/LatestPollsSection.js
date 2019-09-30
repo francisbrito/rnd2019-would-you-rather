@@ -43,7 +43,7 @@ export default function LatestPollsSection({
       <SectionHeader>
         <AlignedSectionTitle>Latest Polls</AlignedSectionTitle>
         <ViewPollsClickableWrapper onClick={onClickViewPolls}>
-          <SectionLabel>View polls</SectionLabel>
+          <SectionLabel>See more</SectionLabel>
         </ViewPollsClickableWrapper>
       </SectionHeader>
       <PollList polls={polls} onClickPoll={onClickPoll} isHorizontal />

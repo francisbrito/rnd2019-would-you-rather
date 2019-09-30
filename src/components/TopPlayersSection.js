@@ -82,7 +82,7 @@ export default function TopPlayersSection({ players, onClickOpenLeaderboard }) {
       <SectionHeader>
         <AlignedSectionTitle>Top players</AlignedSectionTitle>
         <ViewScoreboardClickableWrapper onClick={onClickOpenLeaderboard}>
-          <SectionLabel>View scoreboard</SectionLabel>
+          <SectionLabel>See more</SectionLabel>
         </ViewScoreboardClickableWrapper>
       </SectionHeader>
       {isEmpty ? (
