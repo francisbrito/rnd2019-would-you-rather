@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as propTypes from 'prop-types';
+import * as r from 'ramda';
+
 import { selectPollAction } from '../actions';
 
 import {
@@ -58,9 +60,12 @@ HomePage.propTypes = {
 const mapStateToProps = state => ({
   topPlayers: state.topPlayers,
   latestPolls: state.latestPolls,
-  currentUserAnswers: state.answers
-    .filter(a => a.userId === state.authentication.selectedProfile)
-    .map(a => a.answer)
+  currentUserAnswers: r.pipe(
+    r.prop('answers'),
+    r.filter(r.propEq('userId', state.authentication.selectedProfile)),
+    r.sort(r.descend(r.prop('creationDate'))),
+    r.map(r.prop('answer'))
+  )(state)
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
