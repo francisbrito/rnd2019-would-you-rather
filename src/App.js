@@ -10,7 +10,8 @@ import {
   SignInPage,
   AddNewPollPage,
   PollDetailPage,
-  LeaderboardPage
+  LeaderboardPage,
+  PollsPage
 } from './containers';
 import { createStore } from './reducers';
 
@@ -18,10 +19,6 @@ const { store, persistor } = createStore();
 
 function SignUp() {
   return <h1>Sign Up</h1>;
-}
-
-function Polls() {
-  return <h1>Polls</h1>;
 }
 
 function NotFound() {
@@ -37,7 +34,7 @@ function App() {
             <Route component={SignInPage} path="/authenticate" />
             <Route component={SignUp} path="/register" />
             <PrivateRoute component={HomePage} path="/" exact />
-            <PrivateRoute component={Polls} path="/polls" exact />
+            <PrivateRoute component={PollsPage} path="/polls" exact />
             <PrivateRoute component={AddNewPollPage} path="/polls/new" exact />
             <PrivateRoute component={PollDetailPage} path="/polls/:id" />
             <PrivateRoute component={LeaderboardPage} path="/leaderboard" />

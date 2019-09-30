@@ -41,12 +41,7 @@ const calculateScore = s => s.pollsAnswered + s.pollsCreated;
 const mapStateToProps = ({ scoreboard }) => ({
   scores: r.pipe(
     r.values,
-    r.sortBy(
-      r.compose(
-        r.descend,
-        calculateScore
-      )
-    )
+    r.sort(r.descend(calculateScore))
   )(scoreboard)
 });
 

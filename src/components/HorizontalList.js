@@ -7,4 +7,5 @@ export default styled.div`
   overflow-x: scroll;
   padding: 4px;
   margin: -4px;
+  align-items: flex-start;
 `;

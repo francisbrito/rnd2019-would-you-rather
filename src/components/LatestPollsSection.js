@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { HorizontalList, Poll, SectionTitle, SectionLabel } from './index';
-import pollsIcon from '../icons/polls.svg';
+import { PollList, Poll, SectionTitle, SectionLabel } from './index';
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,60 +33,11 @@ const SectionHeader = styled.div`
   justify-content: space-between;
 `;
 
-const StyledPoll = styled(Poll)`
-  min-width: 200px;
-`;
-
-const PollClickableWrapper = styled.button`
-  text-align: start;
-  background: none;
-  border: none;
-  outline: none;
-  padding: 0;
-  &:hover {
-    outline: none;
-    cursor: pointer;
-  }
-  margin-left: 12px;
-  &:first-of-type {
-    margin-left: 0;
-  }
-`;
-
-const CenteredWrapper = styled.div`
-  flex-direction: column;
-  display: flex;
-  flex: 1;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(187, 187, 187, 0.1);
-  margin: 0 12px;
-  border-radius: 4px;
-  min-height: 100px;
-`;
-
-const EmptyListTitle = styled.h4`
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  margin: 0;
-  color: #8a8a8a;
-`;
-
-const EmptyList = () => (
-  <CenteredWrapper>
-    <img src={pollsIcon} alt="Polls" />
-    <EmptyListTitle>No polls found</EmptyListTitle>
-  </CenteredWrapper>
-);
-
 export default function LatestPollsSection({
   polls,
   onClickViewPolls,
   onClickPoll
 }) {
-  const isEmpty = polls.length === 0;
-
   return (
     <Wrapper>
       <SectionHeader>
@@ -96,26 +46,18 @@ export default function LatestPollsSection({
           <SectionLabel>View polls</SectionLabel>
         </ViewPollsClickableWrapper>
       </SectionHeader>
-      {isEmpty ? (
-        <EmptyList />
-      ) : (
-        <HorizontalList>
-          {polls.map((p, index) => (
-            <PollClickableWrapper key={index} onClick={() => onClickPoll(p)}>
-              <StyledPoll {...p} />
-            </PollClickableWrapper>
-          ))}
-        </HorizontalList>
-      )}
+      <PollList polls={polls} onClickPoll={onClickPoll} isHorizontal />
     </Wrapper>
   );
 }
 
 LatestPollsSection.propTypes = {
   polls: propTypes.arrayOf(propTypes.shape(Poll.propTypes)).isRequired,
-  onClickViewPolls: propTypes.func
+  onClickViewPolls: propTypes.func,
+  onClickPoll: propTypes.func
 };
 
 LatestPollsSection.defaultProps = {
-  onClickViewPolls: () => {}
+  onClickViewPolls: () => {},
+  onClickPoll: () => {}
 };
