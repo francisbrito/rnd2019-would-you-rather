@@ -11,6 +11,9 @@ export default {
 export const basic = () => (
   <Header
     title="Header"
-    user={{ profilePicture: 'https://placekitten.com/301', name: 'Mittens' }}
+    user={{
+      playerPicture: 'https://placekitten.com/301',
+      playerName: 'Mittens'
+    }}
   />
 );

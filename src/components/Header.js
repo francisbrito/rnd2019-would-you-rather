@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { Title } from './index';
+import { HeaderDropdownMenu, Title } from './index';
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -20,26 +20,19 @@ const StyledSectionTitle = styled(Title)`
   flex: 1;
 `;
 
-const ProfilePicture = styled.img`
-  border-radius: 24px;
-  height: 24px;
-  width: 24px;
-  margin-left: auto;
-`;
-
 export default function Header({ title, user, onLogOut }) {
   return (
     <Wrapper>
       <StyledSectionTitle>{title}</StyledSectionTitle>
-      <ProfilePicture src={user.profilePicture} alt={user.name} />
+      <HeaderDropdownMenu currentUser={user} onLogOut={onLogOut} />
     </Wrapper>
   );
 }
 
 Header.propTypes = {
   user: propTypes.shape({
-    name: propTypes.string.isRequired,
-    profilePicture: propTypes.string.isRequired
+    playerName: propTypes.string.isRequired,
+    playerPicture: propTypes.string.isRequired
   }),
   title: propTypes.string.isRequired,
   onLogOut: propTypes.func

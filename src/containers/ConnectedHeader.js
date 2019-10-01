@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
+
+import { logOutAction } from '../actions';
 import { Header } from '../components';
 
 const mapStateToProps = ({ page, authentication }) => ({
-  user: {
-    name: authentication.currentUser.playerName,
-    profilePicture: authentication.currentUser.playerPicture
-  },
+  user: authentication.currentUser,
   title: page.current
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  onLogOut: () => dispatch(logOutAction())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

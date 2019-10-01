@@ -15,7 +15,8 @@ import {
   SIGN_IN,
   SELECT_OPTION,
   SELECT_POLL,
-  SET_HEADER
+  SET_HEADER,
+  LOGOUT
 } from './actionTypes';
 
 export const retrieveTopPlayersAction = () => ({
@@ -105,4 +106,8 @@ export const selectPollAction = pollId => ({
 export const setHeaderAction = title => ({
   type: SET_HEADER,
   payload: title
+});
+
+export const logOutAction = () => ({
+  type: LOGOUT
 });
