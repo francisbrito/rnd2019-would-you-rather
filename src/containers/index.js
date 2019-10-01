@@ -12,3 +12,4 @@ export { default as PollsPage } from './PollsPage';
 export {
   default as FloatingAddQuestionButton
 } from './FloatingAddQuestionButton';
+export { default as AppContainer } from './AppContainer';

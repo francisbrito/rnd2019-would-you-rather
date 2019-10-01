@@ -39,3 +39,9 @@ export const SELECT_OPTION = 'SELECT_OPTION';
 export const SELECT_POLL = 'SELECT_POLL';
 
 export const SET_HEADER = 'SET_HEADER';
+
+export const SET_POLLS = 'SET_POLLS';
+
+export const SET_USER_PROFILES = 'SET_USER_PROFILES';
+
+export const FINISH_LOADING = 'FINISH_LOADING';

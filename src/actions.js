@@ -16,7 +16,10 @@ import {
   SELECT_OPTION,
   SELECT_POLL,
   SET_HEADER,
-  LOGOUT
+  LOGOUT,
+  SET_POLLS,
+  SET_USER_PROFILES,
+  FINISH_LOADING
 } from './actionTypes';
 
 export const retrieveTopPlayersAction = () => ({
@@ -110,4 +113,18 @@ export const setHeaderAction = title => ({
 
 export const logOutAction = () => ({
   type: LOGOUT
+});
+
+export const setPollsAction = polls => ({
+  type: SET_POLLS,
+  payload: { polls }
+});
+
+export const setUserProfilesAction = profiles => ({
+  type: SET_USER_PROFILES,
+  payload: { profiles }
+});
+
+export const finishInitializationAction = () => ({
+  type: FINISH_LOADING
 });

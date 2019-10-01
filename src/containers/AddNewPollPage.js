@@ -116,7 +116,7 @@ function AddNewPollPage({ currentUser, onAddNewPoll }) {
           const newPoll = {
             id: uuid.v4(),
             creationDate: Date.now(),
-            createdBy: currentUser,
+            createdBy: currentUser.id,
             options: [optionA, optionB]
           };
 

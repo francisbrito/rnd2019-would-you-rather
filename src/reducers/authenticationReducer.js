@@ -1,18 +1,21 @@
-import { SAVE_PROFILE, LOGOUT, SELECT_PROFILE, SIGN_IN } from '../actionTypes';
+import {
+  SAVE_PROFILE,
+  LOGOUT,
+  SELECT_PROFILE,
+  SIGN_IN,
+  SET_USER_PROFILES
+} from '../actionTypes';
 
 export const GUEST_PROFILE = {
   id: 'guest-profile',
   playerName: 'Guest',
-  playerPicture: 'https://placekitten.com/300'
+  playerPicture: 'https://i.pravatar.cc/300'
 };
 
 const INITIAL = {
-  guestProfile: GUEST_PROFILE,
   selectedProfile: null,
   currentUser: null,
-  savedProfiles: {
-    [GUEST_PROFILE.id]: GUEST_PROFILE
-  }
+  savedProfiles: {}
 };
 
 export default function authenticationReducer(state = INITIAL, action) {
@@ -36,7 +39,20 @@ export default function authenticationReducer(state = INITIAL, action) {
         currentUser: action.payload.user
       };
     case LOGOUT:
-      return INITIAL;
+      return {
+        ...state,
+        selectedProfile: null,
+        currentUser: null,
+      };
+
+    case SET_USER_PROFILES:
+      return {
+        ...state,
+        savedProfiles: {
+          ...action.payload.profiles,
+          [GUEST_PROFILE.id]: GUEST_PROFILE
+        }
+      };
     default:
       return state;
   }

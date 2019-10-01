@@ -33,7 +33,10 @@ PollDetailPage.propTypes = {
 
 const mapStateToProps = ({ polls, authentication }) => {
   return {
-    poll: polls.all[polls.selected],
+    poll: {
+      ...polls.all[polls.selected],
+      createdBy: authentication.savedProfiles[polls.all[polls.selected].createdBy]
+    },
     optionSelected: r.pathOr(
       null,
       ['all', polls.selected, 'answers', authentication.currentUser.id],

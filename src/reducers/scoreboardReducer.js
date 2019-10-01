@@ -15,6 +15,7 @@ export default function scoreboardReducer(state = INITIAL, action) {
       return INITIAL;
     case ADD_NEW_USER:
       return {
+        ...state,
         [action.payload.user.id]: {
           ...action.payload.user,
           pollsCreated: 0,
@@ -24,7 +25,7 @@ export default function scoreboardReducer(state = INITIAL, action) {
     case ADD_NEW_POLL:
       return r.evolve(
         {
-          [action.payload.poll.createdBy.id]: {
+          [action.payload.poll.createdBy]: {
             pollsCreated: r.add(1)
           }
         },
@@ -33,7 +34,7 @@ export default function scoreboardReducer(state = INITIAL, action) {
     case ANSWER_POLL_SUCCESS:
       return r.evolve(
         {
-          [action.payload.poll.createdBy.id]: {
+          [action.payload.userId]: {
             pollsAnswered: r.add(1)
           }
         },

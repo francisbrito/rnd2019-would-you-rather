@@ -58,8 +58,14 @@ HomePage.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  topPlayers: state.topPlayers,
-  latestPolls: state.latestPolls,
+  topPlayers: state.topPlayers.map(tp => ({
+    ...tp,
+    createdBy: state.authentication.savedProfiles[tp.id]
+  })),
+  latestPolls: state.latestPolls.map(lp => ({
+    ...lp,
+    createdBy: state.authentication.savedProfiles[lp.createdBy]
+  })),
   currentUserAnswers: r.pipe(
     r.prop('answers'),
     r.filter(r.propEq('userId', state.authentication.selectedProfile)),

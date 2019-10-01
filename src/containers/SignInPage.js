@@ -34,12 +34,7 @@ const SubTitle = styled.h4`
   margin: 0;
 `;
 
-function SignInPage({
-  savedProfiles,
-  guestProfile,
-  onSelectProfile,
-  isAuthenticated
-}) {
+function SignInPage({ savedProfiles, onSelectProfile, isAuthenticated }) {
   return (
     <Fragment>
       {isAuthenticated ? (
@@ -49,7 +44,7 @@ function SignInPage({
           <Title>Would you rather?</Title>
           <SubTitle>A fun game to play with friends</SubTitle>
           <ChooseProfileButton
-            defaultProfile={guestProfile}
+            defaultProfile={savedProfiles[0]}
             onClick={onSelectProfile}
             savedProfiles={savedProfiles}
           >
@@ -62,11 +57,6 @@ function SignInPage({
 }
 
 SignInPage.propTypes = {
-  guestProfile: propTypes.shape({
-    id: propTypes.string.isRequired,
-    playerName: propTypes.string.isRequired,
-    playerPicture: propTypes.string.isRequired
-  }).isRequired,
   savedProfiles: propTypes.arrayOf(
     propTypes.shape({
       id: propTypes.string.isRequired,
@@ -84,7 +74,6 @@ SignInPage.defaultProps = {
 };
 
 const mapStateToProps = ({ authentication }) => ({
-  guestProfile: authentication.guestProfile,
   selectedProfile: authentication.selectedProfile,
   savedProfiles: Object.values(authentication.savedProfiles),
   isAuthenticated: !!authentication.currentUser

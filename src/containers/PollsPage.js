@@ -36,11 +36,16 @@ function PollsPage({ polls, onOpenPoll, history }) {
   );
 }
 
-const mapStateToProps = ({ polls }) => ({
+const mapStateToProps = ({ polls, authentication }) => ({
   polls: r.pipe(
     r.prop('all'),
     r.values,
-    r.sort(r.descend(r.prop('creationDate')))
+    r.sort(r.descend(r.prop('creationDate'))),
+    r.map(
+      r.evolve({
+        createdBy: id => authentication.savedProfiles[id]
+      })
+    )
   )(polls)
 });
 

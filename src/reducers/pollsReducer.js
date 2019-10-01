@@ -4,7 +4,8 @@ import {
   ADD_NEW_POLL,
   RESET_POLLS,
   SELECT_OPTION,
-  SELECT_POLL
+  SELECT_POLL,
+  SET_POLLS
 } from '../actionTypes';
 
 const INITIAL = {
@@ -16,6 +17,12 @@ export default function pollsReducer(state = INITIAL, action) {
   switch (action.type) {
     case RESET_POLLS:
       return INITIAL;
+
+    case SET_POLLS:
+      return {
+        ...state,
+        all: action.payload.polls
+      };
 
     case ADD_NEW_POLL:
       return r.set(
