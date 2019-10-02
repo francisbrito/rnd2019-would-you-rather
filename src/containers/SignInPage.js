@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as propTypes from 'prop-types';
 
 import { selectProfileAction } from '../actions';
-import { ChooseProfileButton } from '../components';
+import { SelectProfileDropdownMenu } from '../components';
 
 const Wrapper = styled.div`
   padding: 12px;
@@ -43,13 +43,10 @@ function SignInPage({ savedProfiles, onSelectProfile, isAuthenticated }) {
         <Wrapper>
           <Title>Would you rather?</Title>
           <SubTitle>A fun game to play with friends</SubTitle>
-          <ChooseProfileButton
-            defaultProfile={savedProfiles[0]}
-            onClick={onSelectProfile}
-            savedProfiles={savedProfiles}
-          >
-            Continue as <strong>Guest</strong>
-          </ChooseProfileButton>
+          <SelectProfileDropdownMenu
+            onProfileSelected={onSelectProfile}
+            profiles={savedProfiles}
+          />
         </Wrapper>
       )}
     </Fragment>

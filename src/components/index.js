@@ -9,6 +9,9 @@ export { default as PollList } from './PollList';
 export { default as Menu } from './Menu';
 export { default as DropdownMenu } from './DropdownMenu';
 export { default as HeaderDropdownMenu } from './HeaderDropdownMenu';
+export {
+  default as SelectProfileDropdownMenu
+} from './SelectProfileDropdownMenu';
 export { default as PlayerScoreCard } from './PlayerScoreCard';
 export { default as Answer } from './Answer';
 export { default as QuestionInput } from './QuestionInput';

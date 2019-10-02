@@ -1,26 +1,30 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Menu } from './index';
 
-const StyledMenu = styled(Menu)`
+export const DefaultMenu = styled(Menu)`
+  display: flex;
+  width: 100%;
+  min-width: 100px;
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 36px;
-  margin-right: 24px;
+  z-index: 1;
 `;
 
-function DropdownMenu({ items, ToggleComponent }) {
+function DropdownMenu({ items, className, ToggleComponent, MenuComponent }) {
   const [isShowing, setIsShowing] = useState(false);
+  const StyledMenu = MenuComponent || DefaultMenu;
 
   return (
-    <Fragment>
+    <div
+      className={className}
+      style={{ position: 'relative', display: 'inline-block' }}
+    >
       <ToggleComponent onClick={() => setIsShowing(!isShowing)} />
       {isShowing && (
         <StyledMenu items={items} onClickItem={() => setIsShowing(false)} />
       )}
-    </Fragment>
+    </div>
   );
 }
 

@@ -9,7 +9,8 @@ import {
 export const GUEST_PROFILE = {
   id: 'guest-profile',
   playerName: 'Guest',
-  playerPicture: 'https://i.pravatar.cc/300'
+  playerPicture:
+    'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?cs=srgb&dl=beautiful-brunette-cute-774909.jpg&fm=jpg&w=320'
 };
 
 const INITIAL = {
@@ -42,7 +43,7 @@ export default function authenticationReducer(state = INITIAL, action) {
       return {
         ...state,
         selectedProfile: null,
-        currentUser: null,
+        currentUser: null
       };
 
     case SET_USER_PROFILES:

@@ -48,6 +48,7 @@ const ProfilePicture = styled.img`
   height: 24px;
   width: 24px;
   border-radius: 12px;
+  object-fit: cover;
 `;
 
 const ScoreNumber = styled.span`
