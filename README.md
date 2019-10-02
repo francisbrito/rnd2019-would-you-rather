@@ -1,3 +1,18 @@
+# Would You Rather?
+
+<img align="right" width="360" src="https://raw.githubusercontent.com/francisbrito/rnd2019-would-you-rather/master/docs/showcase.gif"/>
+
+> A fun game to play with friends
+
+Project for Udacity's 2019 React Nano-Degree.
+
+Technologies used:
+* React
+* React Router
+* Redux
+* Redux Sagas
+* Styled Components
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
