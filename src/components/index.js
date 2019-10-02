@@ -8,6 +8,7 @@ export { default as Poll } from './Poll';
 export { default as PollList } from './PollList';
 export { default as Menu } from './Menu';
 export { default as DropdownMenu } from './DropdownMenu';
+export { default as HeaderProfile } from './HeaderProfile';
 export { default as HeaderDropdownMenu } from './HeaderDropdownMenu';
 export {
   default as SelectProfileDropdownMenu

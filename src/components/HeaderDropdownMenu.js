@@ -2,30 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import * as propTypes from 'prop-types';
 
-import { DropdownMenu } from './index';
+import { DropdownMenu, HeaderProfile } from './index';
 import { DefaultMenu } from './DropdownMenu';
 
-const StyledDropdownMenu = styled(DropdownMenu)``;
-
-const ProfilePicture = styled.img`
-  height: 24px;
-  width: 24px;
-  border-radius: 24px;
-  object-fit: cover;
+const StyledDropdownMenu = styled(DropdownMenu)`
+  min-width: 100px;
 `;
 
-const StyledMenu = styled(DefaultMenu)`
-  margin-left: -76px;
-`;
+const StyledMenu = styled(DefaultMenu)``;
 
 function HeaderDropdownMenu({ currentUser, onLogOut }) {
   return (
     <StyledDropdownMenu
       ToggleComponent={props => (
-        <ProfilePicture
+        <HeaderProfile
           {...props}
-          src={currentUser.playerPicture}
-          alt={currentUser.playerName}
+          name={currentUser.playerName}
+          picture={currentUser.playerPicture}
         />
       )}
       MenuComponent={StyledMenu}
