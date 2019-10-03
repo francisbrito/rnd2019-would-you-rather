@@ -51,7 +51,6 @@ const CenteredWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(187, 187, 187, 0.1);
-  margin: 0 12px;
   border-radius: 4px;
   min-height: 100px;
 `;

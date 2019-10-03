@@ -19,7 +19,8 @@ import {
   LOGOUT,
   SET_POLLS,
   SET_USER_PROFILES,
-  FINISH_LOADING
+  FINISH_LOADING,
+  CHANGE_FILTER
 } from './actionTypes';
 
 export const retrieveTopPlayersAction = () => ({
@@ -127,4 +128,9 @@ export const setUserProfilesAction = profiles => ({
 
 export const finishInitializationAction = () => ({
   type: FINISH_LOADING
+});
+
+export const changeFilterAction = filter => ({
+  type: CHANGE_FILTER,
+  payload: filter
 });

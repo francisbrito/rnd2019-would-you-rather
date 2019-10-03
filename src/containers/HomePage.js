@@ -12,7 +12,11 @@ import {
   MyAnswersSection
 } from '../components';
 import { useHeader } from '../hooks';
-import { FloatingAddQuestionButton, withHeader } from './index';
+import {
+  FloatingAddQuestionButton,
+  withHeader,
+  ConnectedPollsList
+} from './index';
 
 const Wrapper = styled.div`
   padding: 0 24px 24px 24px;
@@ -35,11 +39,7 @@ function HomePage({
         players={topPlayers}
         onClickOpenLeaderboard={onOpenLeaderboard}
       />
-      <LatestPollsSection
-        polls={latestPolls}
-        onClickPoll={onOpenPoll}
-        onClickViewPolls={onOpenPolls}
-      />
+      <ConnectedPollsList history={history} />
       <FloatingAddQuestionButton history={history} />
       <MyAnswersSection answers={currentUserAnswers} />
     </Wrapper>

@@ -45,3 +45,5 @@ export const SET_POLLS = 'SET_POLLS';
 export const SET_USER_PROFILES = 'SET_USER_PROFILES';
 
 export const FINISH_LOADING = 'FINISH_LOADING';
+
+export const CHANGE_FILTER = 'CHANGE_FILTER';

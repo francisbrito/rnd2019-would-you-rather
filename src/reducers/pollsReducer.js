@@ -2,6 +2,7 @@ import * as r from 'ramda';
 
 import {
   ADD_NEW_POLL,
+  CHANGE_FILTER,
   RESET_POLLS,
   SELECT_OPTION,
   SELECT_POLL,
@@ -10,7 +11,8 @@ import {
 
 const INITIAL = {
   selected: null,
-  all: {}
+  all: {},
+  selectedFilter: 'UNANSWERED'
 };
 
 export default function pollsReducer(state = INITIAL, action) {
@@ -40,6 +42,12 @@ export default function pollsReducer(state = INITIAL, action) {
         action.payload.option,
         state
       );
+
+    case CHANGE_FILTER:
+      return {
+        ...state,
+        selectedFilter: action.payload
+      };
 
     default:
       return state;

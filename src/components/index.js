@@ -13,6 +13,8 @@ export { default as HeaderDropdownMenu } from './HeaderDropdownMenu';
 export {
   default as SelectProfileDropdownMenu
 } from './SelectProfileDropdownMenu';
+export { default as FilterToggle } from './FilterToggle';
+export { default as PollsSection } from './PollsSection';
 export { default as PlayerScoreCard } from './PlayerScoreCard';
 export { default as Answer } from './Answer';
 export { default as QuestionInput } from './QuestionInput';
