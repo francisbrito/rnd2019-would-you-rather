@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rnd2019-would-you-rather/precache-manifest.0b371568cd0a141126a9909eb9413dc4.js"
+  "/rnd2019-would-you-rather/precache-manifest.6643eb2c160838b7657843fa70adbbf7.js"
 );
 
 self.addEventListener('message', (event) => {
