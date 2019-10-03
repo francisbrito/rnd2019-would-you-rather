@@ -4,8 +4,12 @@ import * as r from 'ramda';
 import { changeFilterAction, selectPollAction } from '../actions';
 import { PollsSection } from '../components';
 
-const isAnsweredBy = userId => r.pathOr(false, ['answers', userId]);
-const isNotAnsweredBy = userId => r.pathOr(true, ['answers', userId]);
+const isAnsweredBy = userId => r.hasPath(['answers', userId]);
+const isNotAnsweredBy = userId =>
+  r.pipe(
+    r.hasPath(['answers', userId]),
+    r.not
+  );
 const inflateUserProfile = profiles => p => ({
   ...p,
   createdBy: profiles[p.createdBy]
