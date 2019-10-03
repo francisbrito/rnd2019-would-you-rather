@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/rnd2019-would-you-rather/static/css/main.3cce7fb5.chunk.css",
+    "main.js": "/rnd2019-would-you-rather/static/js/main.90e26d33.chunk.js",
+    "main.js.map": "/rnd2019-would-you-rather/static/js/main.90e26d33.chunk.js.map",
+    "runtime~main.js": "/rnd2019-would-you-rather/static/js/runtime~main.a50d03e5.js",
+    "runtime~main.js.map": "/rnd2019-would-you-rather/static/js/runtime~main.a50d03e5.js.map",
+    "static/js/2.0a420d4a.chunk.js": "/rnd2019-would-you-rather/static/js/2.0a420d4a.chunk.js",
+    "static/js/2.0a420d4a.chunk.js.map": "/rnd2019-would-you-rather/static/js/2.0a420d4a.chunk.js.map",
+    "index.html": "/rnd2019-would-you-rather/index.html",
+    "precache-manifest.0b371568cd0a141126a9909eb9413dc4.js": "/rnd2019-would-you-rather/precache-manifest.0b371568cd0a141126a9909eb9413dc4.js",
+    "service-worker.js": "/rnd2019-would-you-rather/service-worker.js",
+    "static/css/main.3cce7fb5.chunk.css.map": "/rnd2019-would-you-rather/static/css/main.3cce7fb5.chunk.css.map",
+    "static/media/add.svg": "/rnd2019-would-you-rather/static/media/add.461c9f24.svg",
+    "static/media/check.svg": "/rnd2019-would-you-rather/static/media/check.71070825.svg",
+    "static/media/circle-check.svg": "/rnd2019-would-you-rather/static/media/circle-check.bf513257.svg",
+    "static/media/down-arrow.svg": "/rnd2019-would-you-rather/static/media/down-arrow.dfa63953.svg",
+    "static/media/help.svg": "/rnd2019-would-you-rather/static/media/help.4fcf3fc6.svg",
+    "static/media/polls.svg": "/rnd2019-would-you-rather/static/media/polls.cbd8b5a8.svg",
+    "static/media/scoreboard.svg": "/rnd2019-would-you-rather/static/media/scoreboard.91da6053.svg"
+  }
+}
