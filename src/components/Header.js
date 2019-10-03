@@ -34,8 +34,12 @@ Header.propTypes = {
     playerName: propTypes.string.isRequired,
     playerPicture: propTypes.string.isRequired
   }),
-  title: propTypes.string.isRequired,
+  title: propTypes.string,
   onLogOut: propTypes.func
+};
+
+Header.defaultProps = {
+  title: 'Header'
 };
 
 Header.defaultProps = {

@@ -35,7 +35,7 @@ function AppContainer({ isInitialized }) {
             <Route component={SignInPage} path="/authenticate" />
             <PrivateRoute component={HomePage} path="/" exact />
             <PrivateRoute component={PollsPage} path="/questions" exact />
-            <PrivateRoute component={AddNewPollPage} path="/questions/new" exact />
+            <PrivateRoute component={AddNewPollPage} path="/add" exact />
             <PrivateRoute component={PollDetailPage} path="/questions/:id" />
             <PrivateRoute component={LeaderboardPage} path="/leaderboard" />
             <Route component={NotFound} />
