@@ -4,8 +4,8 @@ import * as r from 'ramda';
 import { changeFilterAction, selectPollAction } from '../actions';
 import { PollsSection } from '../components';
 
-const isAnsweredBy = userId => p => userId in p.answers;
-const isNotAnsweredBy = userId => p => !(userId in p.answers);
+const isAnsweredBy = userId => r.pathOr(false, ['answers', userId]);
+const isNotAnsweredBy = userId => r.pathOr(true, ['answers', userId]);
 const inflateUserProfile = profiles => p => ({
   ...p,
   createdBy: profiles[p.createdBy]
@@ -19,7 +19,7 @@ const mapStateToProps = ({ polls, authentication }) => ({
     ),
     r.values,
     r.map(inflateUserProfile(authentication.savedProfiles)),
-    r.tap(console.log)
+    r.sort(r.descend(r.prop('creationDate')))
   )(polls.all),
   selectedFilter: polls.selectedFilter
 });
