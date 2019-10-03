@@ -21,7 +21,7 @@ function LeaderboardPage({ scores }) {
   return (
     <Wrapper>
       {scores.map(s => (
-        <PlayerScoreCard key={s.id} {...s} />
+        <PlayerScoreCard key={s.id} {...s} isVertical />
       ))}
     </Wrapper>
   );

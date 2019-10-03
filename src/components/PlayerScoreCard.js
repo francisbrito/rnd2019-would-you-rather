@@ -1,14 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as propTypes from 'prop-types';
 
 import { Card, Label } from './index';
+
+const isVertical = css`
+  margin-top: 12px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+`;
 
 const Wrapper = styled(Card)`
   padding: 12px;
   min-width: 100px;
   display: inline-flex;
   flex-direction: column;
+  ${props => (props.isVertical ? isVertical : '')}
 `;
 
 const PlayerInformationWrapper = styled.div`
@@ -60,20 +69,18 @@ const ScoreNumber = styled.span`
 
 export default function PlayerScoreCard({
   className,
-  id,
   playerName,
   playerPicture,
   pollsCreated,
-  pollsAnswered
+  pollsAnswered,
+  isVertical
 }) {
   const [firstName] = playerName.split(' ');
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} isVertical={isVertical}>
       <PlayerInformationWrapper>
         <ProfilePicture src={playerPicture} alt={playerName} />
-        <PlayerName>
-          {firstName}
-        </PlayerName>
+        <PlayerName>{firstName}</PlayerName>
       </PlayerInformationWrapper>
       <ScoreInformationWrapper>
         <PollStatisticsWrapper>
@@ -95,10 +102,12 @@ PlayerScoreCard.propTypes = {
   playerName: propTypes.string.isRequired,
   playerPicture: propTypes.string.isRequired,
   pollsCreated: propTypes.number,
-  pollsAnswered: propTypes.number
+  pollsAnswered: propTypes.number,
+  isVertical: propTypes.bool
 };
 
 PlayerScoreCard.defaultProps = {
   pollsCreated: 0,
-  pollsAnswered: 0
+  pollsAnswered: 0,
+  isVertical: false
 };
