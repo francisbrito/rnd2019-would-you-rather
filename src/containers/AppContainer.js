@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom';
 import { RotateLoader } from 'react-spinners';
 import styled from 'styled-components';
 
@@ -25,6 +25,13 @@ const LoaderWrapper = styled.div`
   flex: 1;
   height: 100%;
 `;
+
+let Router;
+if (process.env.NODE_ENV === 'production') {
+  Router = HashRouter;
+} else {
+  Router = BrowserRouter;
+}
 
 function AppContainer({ isInitialized }) {
   return (

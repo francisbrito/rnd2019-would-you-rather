@@ -2,6 +2,7 @@
   "name": "would-you-rather",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://francisbrito.github.com/rnd2019-would-you-rather",
   "dependencies": {
     "date-fns": "^2.2.1",
     "faker": "^4.1.0",
@@ -25,6 +26,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
@@ -56,6 +59,7 @@
     "@types/react-router-dom": "^4.3.5",
     "@types/redux-logger": "^3.0.7",
     "@types/styled-components": "^4.1.19",
+    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2"
   }
 }
