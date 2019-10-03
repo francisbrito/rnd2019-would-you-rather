@@ -13,7 +13,7 @@ FloatingAddQuestionButton.propTypes = AddQuestionButton.propTypes;
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   onClick: () => {
-    history.push('/polls/new');
+    history.push('/questions/new');
   }
 });
 

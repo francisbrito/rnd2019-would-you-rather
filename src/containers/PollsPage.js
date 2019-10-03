@@ -52,7 +52,7 @@ const mapStateToProps = ({ polls, authentication }) => ({
 const mapDispatchToProps = (dispatch, { history }) => ({
   onOpenPoll: poll => {
     dispatch(selectPollAction(poll.id));
-    history.push(`/polls/${poll.id}`);
+    history.push(`/questions/${poll.id}`);
   },
   onAddNewPoll: () => {}
 });

@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   onChangeFilter: filter => dispatch(changeFilterAction(filter)),
   onClickPoll: poll => {
     dispatch(selectPollAction(poll.id));
-    history.push(`/polls/${poll.id}`);
+    history.push(`/questions/${poll.id}`);
   }
 });
 

@@ -77,13 +77,13 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, { history }) => ({
   onOpenPoll: poll => {
     dispatch(selectPollAction(poll.id));
-    history.push(`/polls/${poll.id}`);
+    history.push(`/questions/${poll.id}`);
   },
   onOpenLeaderboard: () => {
     history.push('/leaderboard');
   },
   onOpenPolls: () => {
-    history.push('/polls');
+    history.push('/questions');
   }
 });
 
